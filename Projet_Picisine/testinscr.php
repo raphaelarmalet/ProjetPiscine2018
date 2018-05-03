@@ -1,5 +1,13 @@
+<!DOCTYPE html>
+
+<html>
+ <title> Inscription </title>
+ <meta charset = "UTF-8"/>
+ <body>
+ <form method = "post"> 
+
+
 <?php 
- //require ('fonctions.php');
  if (isset($_POST['Inscription']))
  {
 	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
@@ -47,8 +55,8 @@
 			{
 				$serveur ="localhost";
 				$login = "root";
-				$pw = "";
-				$bdd = "projetweb";
+				$pw = "root";
+				$bdd = "ProjetWEB";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
 		
@@ -62,6 +70,7 @@
 					$Tel = $_POST['Tel'];
 					$Langue = $_POST['Langue'];
 					$Diplome = $_POST['Diplome'];
+					
 
 					/*$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
 					$q-> execute();
@@ -74,12 +83,14 @@
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
+
+
 					/*}
 					else
 					{
 						echo "Un compte utilisant cette addresse mail existe deja";
 					}*/
-					
+
 				}
 
  				}
@@ -94,15 +105,9 @@
   					echo $errors[$j];
   				}
   		}
-?>
+?> 
 
-<!DOCTYPE html>
 
-<html>
- <title> Inscription </title>
- <meta charset = "UTF-8"/>
- <body>
-<form method = "post">
 	<p>
 	
 		<label for = "IDuser"> Mail : </label>
@@ -140,8 +145,17 @@
         <input type="checkbox" name="Homme" id="Statut" /> </br>
 		<input type="checkbox" name="Femme" id="Statut" /> </br>
 		
-		<input type="submit" name="Inscription" value="Inscription" /> </br>
-		
+		<input type="submit" name="Inscription" value="Inscription"/></br>
+       
+
+
+        <button> <a href="Inscriptionreussie.php?IDuser" > suivant </a> </button>
+       </br>
+        
+
+       
+	
+
 		</p>
 		</form>
 		</body>
