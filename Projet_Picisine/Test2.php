@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-
-<html>
- <title> Inscription </title>
- <meta charset = "UTF-8"/>
- <body>
- <form method = "post"> 
-
-
 <?php 
+require ('index.php');
  if (isset($_POST['Inscription']))
  {
 	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
@@ -55,8 +47,8 @@
 			{
 				$serveur ="localhost";
 				$login = "root";
-				$pw = "root";
-				$bdd = "ProjetWEB";
+				$pw = "";
+				$bdd = "projetweb";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
 				$dbh = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
@@ -71,7 +63,6 @@
 					$Tel = $_POST['Tel'];
 					$Langue = $_POST['Langue'];
 					$Diplome = $_POST['Diplome'];
-					
 
 					$q= $dbh->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
 					$q-> execute();
@@ -88,19 +79,8 @@
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
-<<<<<<< HEAD
-
-
-					/*}
-					else
-					{
-						echo "Un compte utilisant cette addresse mail existe deja";
-					}*/
-
-=======
 					}
 					
->>>>>>> 1b7cc8c282e70dcd2a4bbbe095c03d870f927ffa
 				}
 
  				}
@@ -115,60 +95,4 @@
   					echo $errors[$j];
   				}
   		}
-?> 
-
-
-	<p>
-	
-		<label for = "IDuser"> Mail : </label>
-        <input type="text" name="IDuser" id="IDuser" required="required"/> </br>
-		
-		<label for = "MDP"> MDP : </label>
-        <input type="text" name="MDP" id="MDP" required="required"/> </br>
-
-        <label for = "MDPconfirmation"> MDPC : </label>
-        <input type="text" name="MDPconfirmation" id="MDPconfirmation" required="required"/> </br>
-		
-		<label for = "Nom"> Nom : </label>
-        <input type="text" name="Nom" id="Nom" required="required"/> </br>
-		
-		<label for = "Prenom"> Prenom : </label>
-        <input type="text" name="Prenom" id="Prenom" required="required"/> </br>
-		
-		<label for = "Age"> Age : </label>
-        <input type="text" name="Age" id="Age" required="required"/> </br>
-		
-		<label for = "Langue"> Langue : </label>
-        <input type="text" name="Langue" id="Langue" required="required"/> </br>
-		
-		<label for = "Diplome"> Diplome : </label>
-        <input type="text" name="Diplome" id="Diplome" required="required"/> </br>
-		
-		<label for = "Tel"> Tel : </label>
-        <input type="text" name="Tel" id="Tel" required="required"/> </br>
-		
-		<label for = "Sexe"> Sexe : </label>
-        <input type="checkbox" name="Homme" id="Sexe" /> </br>
-		<input type="checkbox" name="Femme" id="Sexe" /> </br>
-		
-		<label for = "Statut"> Statut : </label>
-        <input type="checkbox" name="Homme" id="Statut" /> </br>
-		<input type="checkbox" name="Femme" id="Statut" /> </br>
-		
-		<input type="submit" name="Inscription" value="Inscription"/></br>
-       
-
-
-        <button> <a href="Inscriptionreussie.php?IDuser" > suivant </a> </button>
-       </br>
-        
-
-       
-	
-
-		</p>
-		</form>
-		</body>
-</html>
-
-<a href="journal.html" class="btn btn-lg btn-warning">Se connecter</a>
+?>
