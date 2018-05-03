@@ -1,5 +1,5 @@
 <?php 
- require ('fonctions.php');
+ //require ('fonctions.php');
  if (isset($_POST['Inscription']))
  {
 	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
@@ -63,22 +63,22 @@
 					$Langue = $_POST['Langue'];
 					$Diplome = $_POST['Diplome'];
 
-					$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
+					/*$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
 					$q-> execute();
 					$count=$q->rowcount();
 					$q->closeCursor();
 
 					if($count=0)
-					{
+					{*/
 						$qr= "INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) 
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
-					}
+					/*}
 					else
 					{
 						echo "Un compte utilisant cette addresse mail existe deja";
-					}
+					}*/
 					
 				}
 
