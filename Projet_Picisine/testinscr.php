@@ -17,16 +17,16 @@
  			extract($_POST);
 
 	
-			if (mb_strlen ($Nom)<1)
+			if (mb_strlen ($Nom)<3)
 			{
-				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un nom surperieur à 3 caractère";
 				$i=$i+1;
 
 			}
 
-			if (mb_strlen ($Prenom)<1)
+			if (mb_strlen ($Prenom)<3)
 			{
-				$errors[]="Veuillez saisir un prenom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un prenom surperieur à 3 caractère";
 				$i=$i+1;
 
 
@@ -59,7 +59,6 @@
 				$bdd = "ProjetWEB";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
-				$dbh = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
 		
 				if($co)
 				{
@@ -73,22 +72,17 @@
 					$Diplome = $_POST['Diplome'];
 					
 
-					$q= $dbh->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
+					/*$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
 					$q-> execute();
 					$count=$q->rowcount();
 					$q->closeCursor();
 
-					if($count!=NULL)
-					{
-						echo "Un compte avec ce mail existe deja";
-					}
-					else
-					{
+					if($count=0)
+					{*/
 						$qr= "INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) 
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
-<<<<<<< HEAD
 
 
 					/*}
@@ -97,10 +91,6 @@
 						echo "Un compte utilisant cette addresse mail existe deja";
 					}*/
 
-=======
-					}
-					
->>>>>>> 1b7cc8c282e70dcd2a4bbbe095c03d870f927ffa
 				}
 
  				}
@@ -170,5 +160,3 @@
 		</form>
 		</body>
 </html>
-
-<a href="journal.html" class="btn btn-lg btn-warning">Se connecter</a>
