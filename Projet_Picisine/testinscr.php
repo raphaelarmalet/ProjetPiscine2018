@@ -51,14 +51,15 @@
 				$i=$i+1;
 			}  
 
-			if(count($errors)==0)
+			if(count($errors)== 0)
 			{
 				$serveur ="localhost";
 				$login = "root";
-				$pw = "root";
-				$bdd = "ProjetWEB";
+				$pw = "";
+				$bdd = "projetweb";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
+				$db = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
 		
 				if($co)
 				{
@@ -72,24 +73,23 @@
 					$Diplome = $_POST['Diplome'];
 					
 
-					/*$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
+					$q= $db->prepare("SELECT IDuser FROM user WHERE IDuser='$IDUser'");
 					$q-> execute();
 					$count=$q->rowcount();
 					$q->closeCursor();
 
-					if($count=0)
-					{*/
+					if($count != NULL)
+					{
+						echo "Un compte existant utilise deja ce mail";
+
+					}
+					else
+					{
 						$qr= "INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) 
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
-
-
-					/*}
-					else
-					{
-						echo "Un compte utilisant cette addresse mail existe deja";
-					}*/
+					}
 
 				}
 
@@ -149,13 +149,8 @@
        
 
 
-        <button> <a href="Inscriptionreussie.php?IDuser" > suivant </a> </button>
+        <button> <a href="Inscriptionreussie.php?IDuser" suivant </a> </button>
        </br>
-        
-
-       
-	
-
 		</p>
 		</form>
 		</body>
