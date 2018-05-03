@@ -1,5 +1,4 @@
 <?php 
- require ('fonctions.php');
  if (isset($_POST['Inscription']))
  {
 	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
@@ -9,16 +8,16 @@
  			extract($_POST);
 
 	
-			if (mb_strlen ($Nom)<3)
+			if (mb_strlen ($Nom)<1)
 			{
-				$errors[]="Veuillez saisir un nom surperieur à 3 caractère";
+				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
 				$i=$i+1;
 
 			}
 
-			if (mb_strlen ($Prenom)<3)
+			if (mb_strlen ($Prenom)<1)
 			{
-				$errors[]="Veuillez saisir un prenom surperieur à 3 caractère";
+				$errors[]="Veuillez saisir un prenom surperieur à 1 caractère";
 				$i=$i+1;
 
 
@@ -51,6 +50,7 @@
 				$bdd = "projetweb";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
+				$dbh = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
 		
 				if($co)
 				{
@@ -63,21 +63,21 @@
 					$Langue = $_POST['Langue'];
 					$Diplome = $_POST['Diplome'];
 
-					$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
+					$q= $dbh->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
 					$q-> execute();
 					$count=$q->rowcount();
 					$q->closeCursor();
 
-					if($count=0)
+					if($count!=NULL)
+					{
+						echo "Un compte avec ce mail existe deja";
+					}
+					else
 					{
 						$qr= "INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) 
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
-					}
-					else
-					{
-						echo "Un compte utilisant cette addresse mail existe deja";
 					}
 					
 				}
