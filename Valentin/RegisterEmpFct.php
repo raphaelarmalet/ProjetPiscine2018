@@ -31,6 +31,7 @@ if (isset($_POST['Inscription']))
 				{
 					$IDEmployeur = $_POST['IDEmployeur'];
 					$Poste = $_POST['Poste'];
+					$Entreprise = $_POST['Entreprise'];
 					$IDUser=$_SESSION['IDuser'];
 					$q= $dbh->prepare("SELECT IDEmployeur FROM employeur WHERE IDEmployeur='$IDEmployeur'");
 					$q-> execute();
@@ -43,7 +44,7 @@ if (isset($_POST['Inscription']))
 					}
 					else
 					{
-						echo $q1= "INSERT INTO `employeur` (`IDEmployeur`, `IDUser`, `Poste`) VALUES ('$IDEmployeur', '$IDUser', '$Poste')";
+						echo $q1= "INSERT INTO `employeur` (`IDEmployeur`, `IDUser`, `Poste`, `Entreprise`) VALUES ('$IDEmployeur', '$IDUser', '$Poste', '$Entreprise')";
 						$result = mysqli_query($co, $q1);
 						$q= $dbh->prepare("SELECT IDEmployeur FROM employeur WHERE IDEmployeur='$IDEmployeur'");
 						$q-> execute();

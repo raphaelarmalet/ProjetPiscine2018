@@ -27,8 +27,15 @@
                 <label for="inputPoste"></label>
                 <input type="texte" class="form-control" id="Poste" name="Poste" placeholder="Poste">
               </div>
+              <div class="col-lg-12">
+                <label for="inputPoste"></label>
+                <input type="texte" class="form-control" id="Entreprise" name="Entreprise" placeholder="Entreprise">
             </div>
+              <div class="col-lg-12">
+                <label for="inputPoste"></label>
+                <label for="inputPoste"></label>
             <input type="submit" class="form-control" name="Inscription" value="Inscription"/></br>
+          </div>
           </form>
         </div>
       </div>

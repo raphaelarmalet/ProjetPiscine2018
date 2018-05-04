@@ -20,8 +20,10 @@
           <form method ="post" action="Accueil.php">
             <label for="Space"></label>
             <label for="Space"></label>
+             <div class="col-lg-12">
             <input type="submit" class="form-control" name="Inscription" value="Inscription"/></br>
             <input type="submit" class="form-control" name="Connexion" value="Connexion"/></br>
+          </div>
           </form>
         </div>
       </div>
