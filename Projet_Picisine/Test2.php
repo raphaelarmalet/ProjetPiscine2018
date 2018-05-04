@@ -3,26 +3,48 @@
  if (isset($_POST['Inscription']))
  {
  	$i=0;
-	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
+	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']) && !empty ($_POST['Statut'])&& !empty ($_POST['Sexe']))
 		{
      		
      		$errors= [];
  			extract($_POST);
 
+ 			if($Sexe=='Homme')
+ 			{
+ 				$Sexe= '0';
+ 			}
+ 			else if($Sexe=='Femme')
+ 			{
+ 				$Sexe= '1';
+ 			}
+ 			else if($Sexe!='Femme' && $Sexe!='Homme')
+ 			{
+ 				echo "Veuillez rentrer bien rentrer votre sexe";
+ 			}
+
+ 			if($Statut=='Etudiant')
+ 			{
+ 				$Statut= '0';
+ 			}
+ 			else if($Statut=='Employeur')
+ 			{
+ 				$Statut= '1';
+ 			}
+ 			else if($Statut!='Etudiant' && $Statut!='Employeur')
+ 			{
+ 				echo "Les deux statuts sont Employeur ou Etudiant";
+ 			}
 	
 			if (mb_strlen ($Nom)<1)
 			{
 				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
 				$i=$i+1;
-
 			}
 
 			if (mb_strlen ($Prenom)<1)
 			{
 				$errors[]="Veuillez saisir un prenom surperieur à 1 caractère";
 				$i=$i+1;
-
-
 			}
 
 			if (mb_strlen ($MDP)<6)
@@ -77,7 +99,7 @@
 					else
 					{
 						$qr= "INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) 
-								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
+								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '$Sexe', '$Statut', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
 						echo "ca marche salt";
