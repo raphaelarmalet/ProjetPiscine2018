@@ -18,13 +18,13 @@ session_start();
 
 			if (mb_strlen ($Prenom)<1)
 			{
-				$errors[]="Veuillez saisir un prenom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un prénom surperieur à 1 caractère";
 				$i=$i+1;
 			}
 
 			if (mb_strlen ($MDP)<6)
 			{
-				$errors[]="Veuillez saisir un mot de passe surperieur à 6 caractères";
+				$errors[]="Veuillez saisir un mot de passe supérieur à 6 caractères";
 				$i=$i+1;
 			}
 
@@ -69,7 +69,7 @@ session_start();
 
 					if($count!=NULL)
 					{
-						echo "Un compte avec ce mail existe deja";
+						echo "Un compte avec ce mail existe déjà";
 					}
 					else
 					{
