@@ -27,16 +27,4 @@ if ($result->num_rows > 0) {
 }
 $co->close();
 ?> 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-</head>
 
-<body>
-	<form method ="post" action="Accueil.php">
-	 <input type="submit" name="Connexion" value="Connexion"/></br>
-	  <input type="submit" name="Inscription" value="Inscription"/></br>
-	</form>
-</body>
-</html>
