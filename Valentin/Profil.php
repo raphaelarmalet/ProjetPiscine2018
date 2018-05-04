@@ -1,8 +1,7 @@
 
 <?php 
 session_start();
-echo "ZAWARUDO!!!!!!!!!!!!!!!!!";
-$a= $_SESSION['IDuser'];
+$SID= $_SESSION['IDuser'];
 
 $serveur ="localhost";
 $login = "root";
@@ -15,7 +14,7 @@ $co= mysqli_connect($serveur,$login,$pw,$bdd);
     die("Connection failed: " . $co->connect_error);
 } 
 
-$sql = "SELECT Nom, Prenom,Age,Diplome,Sexe,Telephone FROM user WHERE IDuser='$a' ";
+$sql = "SELECT Nom, Prenom,Age,Diplome,Sexe,Telephone FROM user WHERE IDuser='$SID' ";
 $result = $co->query($sql);
 
 if ($result->num_rows > 0) {
@@ -28,3 +27,16 @@ if ($result->num_rows > 0) {
 }
 $co->close();
 ?> 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+	<form method ="post" action="Accueil.php">
+	 <input type="submit" name="Connexion" value="Connexion"/></br>
+	  <input type="submit" name="Inscription" value="Inscription"/></br>
+	</form>
+</body>
+</html>

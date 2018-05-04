@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 02 mai 2018 à 09:33
+-- Généré le :  ven. 04 mai 2018 à 13:28
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `emploi` (
 
 DROP TABLE IF EXISTS `employeur`;
 CREATE TABLE IF NOT EXISTS `employeur` (
-  `IDEmployeur` int(11) NOT NULL AUTO_INCREMENT,
+  `IDEmployeur` int(11) NOT NULL,
   `IDUser` varchar(255) NOT NULL,
   `Poste` varchar(255) NOT NULL,
   PRIMARY KEY (`IDEmployeur`),
@@ -104,7 +104,16 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `Associatif` varchar(255) NOT NULL,
   PRIMARY KEY (`IDEtudiant`),
   KEY `IDUser` (`IDUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1235 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`IDEtudiant`, `IDUser`, `ING`, `Majeur`, `Stage`, `Associatif`) VALUES
+(42, 'ZAWARUDO@ece.fr', 3, 'ZAWARUDO', 'ZAWARUDO', 'ZAWARUDO'),
+(123, 'itwasmedio@ece.com', 2, 'LOL', 'ECE', 'Dormir'),
+(1234, 'ezjyg@ezjku.com', 5, 'NRG', 'JESAISPAS', 'JESAISPSA');
 
 -- --------------------------------------------------------
 
@@ -150,11 +159,11 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `IDuser` varchar(255) NOT NULL,
   `Nom` varchar(255) NOT NULL,
-  `Prénom` varchar(255) NOT NULL,
+  `Prenom` varchar(255) NOT NULL,
   `Mdp` varchar(255) NOT NULL,
-  `Sexe` tinyint(1) NOT NULL DEFAULT '1',
-  `Statut` tinyint(1) NOT NULL DEFAULT '1',
-  `Photo` blob NOT NULL,
+  `Sexe` varchar(255) NOT NULL,
+  `Statut` varchar(255) NOT NULL,
+  `Photo` varchar(255) NOT NULL,
   `Langue` varchar(255) NOT NULL,
   `Diplome` varchar(255) NOT NULL,
   `Telephone` varchar(255) NOT NULL,
@@ -162,6 +171,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Statut2` tinyint(1) NOT NULL,
   PRIMARY KEY (`IDuser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) VALUES
+('clouetvalentin@gmail.com', 'Clouet', 'Valentin', 'azertyu', 'Homme', 'Etudiant', 'e', 'FR', 'Bac', '0143568276', 20, 1),
+('ezjyg@ezjku.com', 'TYGUHJI', 'ITWA', 'azertyu', 'Homme', 'Etudiant', 'e', 'FR,CH,ENG', 'ECE', '12346', 42, 1),
+('itwasmedio@ece.com', 'Dio', 'Itwasme', 'azertyu', 'Homme', 'Employeur', 'e', 'FR,CH,ENG', 'ECE', '0134567893', 43, 1),
+('Itwasntmedio@gmail.com', 'Dio', 'Itwasme', 'azertyu', 'Homme', 'Etudiant', 'e', 'FR,CH,ENG', 'ERTYUI', '42', 42, 1),
+('ngmarie@ece.fr', 'NG', 'Marie', 'azertyu', 'Femme', 'Employeur', 'e', 'FR,CH,ENG', 'ECE', '0134567893', 24, 1),
+('ngpaul@ece.fr', 'NG', 'Paul', 'azertyu', 'Homme', 'Etudiant', 'e', 'FR,ENG', 'Bac', '0134567893', 22, 1),
+('rapharm@gmail.com', 'Armalet', 'Raphael', 'azertyu', 'Homme', 'Etudiant', 'e', 'FR', 'Bac', '0145387901', 21, 1),
+('thespooker@gmail.com', 'Keys', 'Black', 'azertyu', 'Femme', 'Etudiant', 'e', 'RankEluck', 'TheSpookMaster', '0134567893', 42, 1),
+('ZAWARUDO@ece.fr', 'WARUDO', 'ZA', 'azertyu', 'Homme', 'Employeur', 'e', 'FR,CH,ENG', 'ZAWARUDO', '0142424242', 42, 1);
 
 --
 -- Contraintes pour les tables déchargées

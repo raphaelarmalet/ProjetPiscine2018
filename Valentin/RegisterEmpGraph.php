@@ -14,7 +14,7 @@
     </div>
     <div class="row blockTexteLog">
       <div class="col-lg-12 ">
-        <div class="textJaune">Suite inscription étudiant
+        <div class="textJaune">Suite inscription employeur
         </div>
         <div class="col-lg-12">
           <form method ="post" action="RegisterEmpFct.php">

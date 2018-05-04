@@ -14,7 +14,7 @@
     </div>
     <div class="row blockTexteLog">
       <div class="col-lg-12 ">
-        <div class="textJaune">Bienvenue dans la ruche
+        <div class="textJaune">Inscrivez à la ruche
         </div>
         <div class="col-lg-12">
           <form method ="post" action="RegisterFct.php">

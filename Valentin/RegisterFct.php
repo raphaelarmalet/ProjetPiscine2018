@@ -10,34 +10,6 @@ session_start();
      		
      		$errors= [];
  			extract($_POST);
- 			if($Sexe=='Homme')
- 			{
- 				$Sexe= '0';
- 			}
- 			else if($Sexe=='Femme')
- 			{
- 				$Sexe= '1';
- 			}
- 			else if($Sexe!='Femme' && $Sexe!='Homme')
- 			{
- 				$errors[]="Veuillez rentrer bien rentrer votre sexe";
- 				$i=$i+1;
- 			}
-
- 			if($Statut=='Etudiant')
- 			{
- 				$Statut= '0';
- 			}
- 			else if($Statut=='Employeur')
- 			{
- 				$Statut= '1';
- 			}
- 			else if($Statut!='Etudiant' && $Statut!='Employeur')
- 			{
- 				$errors[]= "Les deux statuts sont Employeur ou Etudiant";
- 				$i=$i+1;
- 			}
-	
 			if (mb_strlen ($Nom)<1)
 			{
 				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
