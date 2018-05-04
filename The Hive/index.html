@@ -29,22 +29,28 @@
                 <input type="nom" class="form-control" id="inputNom" placeholder="Nom">
               </div>
             </div>
+
             <div class="form-group">
               <label for="inputAddress"></label>
               <input type="email" class="form-control" id="inputMail" placeholder="Email ECE">
             </div>
             <div class="form-group">
               <label for="inputAddress2"></label>
-              <input type="mdp" class="form-control" id="inputAddress2" placeholder="mot de passe">
+              <input type="mdp" class="form-control" id="inputMdp" placeholder="mot de passe">
             </div>
             <div class="form-group">
               <label for="inputAddress2"></label>
-              <input type="mdpConfirmation" class="form-control" id="inputAddress2" placeholder="confirmer mot de passe">
+              <input type="mdpConfirmation" class="form-control" id="inputConfMdp" placeholder="confirmer mot de passe">
             </div>
             <div class="form-group">
               <label for="inputAddress2"></label>
-              <input type="langues" class="form-control" id="inputAddress2" placeholder="Langues parlées">
+              <input type="langues" class="form-control" id="inputLangue" placeholder="Langues parlées">
             </div>
+            <div class="form-group">
+              <label for="inputAddress2"></label>
+              <input type="diplome" class="form-control" id="inputLangue" placeholder="Dernier Diplôme">
+            </div>
+
             <div class="form-row">
               <div class="form-group col-lg-6">
                 <label for="inputEmail4"></label>
@@ -54,21 +60,29 @@
                 <label for="inputPassword4"></label>
                 <input type="tel" class="form-control" id="inputNom" placeholder="Téléphone">
               </div>
-              <div class="form-row">
-                <div class="form-group col-lg-4">
-                  <label for="inputEmail4"></label>
-                  <input type="sexe" class="form-control" id="inputPrenom" placeholder="Telephone">
+            </div>
+
+            <div class="form-row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="sel1">Genre:</label>
+                  <select class="form-control" id="Genre">
+                      <option>Homme</option>
+                      <option>Femme</option>
+                  </select>
                 </div>
-                <div class="form-group col-lg-4">
-                  <label for="inputPassword4"></label>
-                  <input type="statut" class="form-control" id="inputNom" placeholder="Statut">
-                </div>
-                <div class="form-group col-lg-4">
-                  <label for="inputPassword4"></label>
-                  <input type="diplome" class="form-control" id="inputNom" placeholder="Diplome">
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="sel1">Statut</label>
+                  <select class="form-control" id="Statut">
+                      <option>Employeur</option>
+                      <option>Etudiant</option>
+                  </select>
                 </div>
               </div>
             </div>
+
             <a href="journal.html" class="btn btn-lg btn-warning">Se connecter</a>
           </form>
         </div>

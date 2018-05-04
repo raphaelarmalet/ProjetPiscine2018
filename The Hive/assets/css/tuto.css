@@ -12,32 +12,49 @@ body
 /* CSS DU MENU */
 .headerTextMenu
 {
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-  color: #f1a900;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+
+    text-align: center;
+
+    color: #f1a900;
 }
-.blockTexteFeed {
+.blockTexteFeed
+{
+    width: 715px;
+    height: 552px;
 
-  border: 2px solid #f1a900;
-  line-height: 40px;
-  text-align: center;
-  margin-right: auto;
-
-  width: 595px;
-  height: 406px;
+    border: solid 1px #f1a900;
+    background-color: #ededed;
+    box-shadow: -6px 11px 4px 0 #00080, 0 2px 4px 0 #00080;
 }
-.blockTexteLog {
+.blockFeedUserInfo
+{
+    line-height: 40px;
 
-  border: 2px solid #f1a900;
-  line-height: 40px;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  width: 595px;
-  height: 806px;
+    width: 302px;
+    height: 379px;
+    margin-right: auto;
+
+    text-align: center;
+
+    border: 2px solid #f1a900;
+    box-shadow: -6px 11px 4px 0 #00080, 0 2px 4px 0 #00080;
+}
+.blockTexteLog
+{
+    line-height: 40px;
+
+    width: 595px;
+    height: 906px;
+    margin-right: auto;
+    margin-left: auto;
+
+    text-align: center;
+
+    border: 2px solid #f1a900;
 }
 
 #logoGrand
@@ -45,30 +62,57 @@ body
     width: 213px;
     height: 241px;
     margin-top: 40px;
-    margin-bottom:40px
-    ;
     margin-right: auto;
+    margin-bottom: 40px;
     margin-left: auto;
-
+    ;
 }
-#logoPetit {
-  width: 337px;
-  height: 153px;
+#logoPetit
+{
+    width: 337px;
+    height: 153px;
 }
 
 .textJaune
 {
-  width: 395px;
-  height: 43px;
-  font-size: 36px;
-  font-weight: 300;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
+    font-size: 36px;
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
 
-  color: #f1a900;
+    width: 395px;
+    height: 43px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+
+    letter-spacing: normal;
+
+    color: #f1a900;
+}
+
+.roundedImage
+{
+    overflow: hidden;
+
+    width: 90px;
+    height: 90px;
+
+    -webkit-border-radius: 50px;
+       -moz-border-radius: 50px;
+            border-radius: 50px;
+}
+
+.photoCouv {
+
+  width: 1440px;
+  height: 467px;
+  opacity: 0.64;
+}
+
+.PhotoProfil {
+  width: 200px;
+  height: 200px;
+
 }
