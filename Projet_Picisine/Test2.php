@@ -1,10 +1,11 @@
-<?php 
-require ('index.php');
+<?php
+	require('index.php');
  if (isset($_POST['Inscription']))
  {
+ 	$i=0;
 	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
 		{
-     		$i=0;
+     		
      		$errors= [];
  			extract($_POST);
 
@@ -79,6 +80,7 @@ require ('index.php');
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
+						echo "ca marche salt";
 					}
 					
 				}
@@ -86,13 +88,13 @@ require ('index.php');
  				}
 
  		}
- 				else
-  				{
-    				$errors[]="Veuillez remplir tous les champs !";
-  				}
-  				for ($j = 0; $j < $i; $j++)
-  				{
+ 		else
+  		{
+    		$errors[]="Veuillez remplir tous les champs !";
+  		}
+  		for ($j = 0; $j < $i; $j++)
+  		{
   					echo $errors[$j];
-  				}
+  		}
   		}
 ?>

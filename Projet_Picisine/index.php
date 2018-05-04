@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <link href="assets/css/bootstrap.css" rel="stylesheet">
   <link href="assets/css/tuto.css" rel="stylesheet">
-  <?php include('Test2.php'); ?>
 </head>
 
 <body>
@@ -18,58 +17,58 @@
         <div class="textJaune">Bienvenue dans la ruche
         </div>
         <div class="col-lg-12">
-          <form method ="post">
+          <form method ="post" action="Test2.php">
             <div class="form-row">
               <div class="form-group col-lg-6">
-                <label for="inputEmail4"></label>
-                <input type="texte" class="form-control" id="Prenom" name="Prenom" placeholder="Prénom">
+                <label for="inputName"></label>
+                <input type="texte" class="form-control" id="Prenom" name="Prenom" placeholder="Prenom">
               </div>
               <div class="form-group col-lg-6">
-                <label for="inputPassword4"></label>
+                <label for="inputName"></label>
                 <input type="texte" class="form-control" id="Nom" name="Nom" placeholder="Nom">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputAddress"></label>
+              <label for="inputEmail"></label>
               <input type="texte" class="form-control" id="IDuser" name="IDuser" placeholder="Email ECE">
             </div>
             <div class="form-group">
-              <label for="inputAddress2"></label>
+              <label for="inputPassword"></label>
               <input type="texte" class="form-control" id="MDP" name="MDP" placeholder="mot de passe">
             </div>
             <div class="form-group">
-              <label for="inputAddress2"></label>
-              <input type="texte" class="form-control" id="MDPConfirmation" name="MDPConfirmation" placeholder="confirmer mot de passe">
+              <label for="inputPassword2"></label>
+              <input type="texte" class="form-control" id="MDPconfirmation" name="MDPconfirmation" placeholder="confirmer mot de passe">
             </div>
             <div class="form-group">
               <label for="inputAddress2"></label>
-              <input type="texte" class="form-control" id="Langue" name="Prenom" placeholder="Langues parlées">
+              <input type="texte" class="form-control" id="Langue" name="Langue" placeholder="Langues parlees">
             </div>
             <div class="form-row">
               <div class="form-group col-lg-6">
                 <label for="inputEmail4"></label>
-                <input type="texte" class="form-control" id="Age" name="Prenom" placeholder="Age">
+                <input type="texte" class="form-control" id="Age" name="Age" placeholder="Age">
               </div>
               <div class="form-group col-lg-6">
                 <label for="inputPassword4"></label>
-                <input type="texte" class="form-control" id="Tel" name="Prenom" placeholder="Téléphone">
+                <input type="texte" class="form-control" id="Tel" name="Tel" placeholder="Telephone">
               </div>
               <div class="form-row">
                 <div class="form-group col-lg-4">
                   <label for="inputEmail4"></label>
-                  <input type="texte" class="form-control" id="Sexe" name="Prenom" placeholder="Sexe">
+                  <input type="texte" class="form-control" id="Sexe" name="Sexe" placeholder="Sexe">
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="inputPassword4"></label>
-                  <input type="texte" class="form-control" id="Statut" name="Prenom" placeholder="Statut">
+                  <input type="texte" class="form-control" id="Statut" name="Statut" placeholder="Statut">
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="inputPassword4"></label>
-                  <input type="texte" class="form-control" id="Diplome" name="Prenom" placeholder="Diplome">
+                  <input type="texte" class="form-control" id="Diplome" name="Diplome" placeholder="Diplome">
                 </div>
               </div>
             </div> 
-            <input type="submit" class="btn btn-lg btn-warning" id="Inscription" name="Prenom" value = "Inscription">
+            <input type="submit" class="form-control" name="Inscription" value="Inscription"/></br>
 
 
           </form>
