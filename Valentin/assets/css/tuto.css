@@ -1,0 +1,74 @@
+body
+{
+    background-color: #ededed;
+}
+/*[class*="col-"], footer {
+  background-color: lightgreen;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 40px;
+  text-align: center;
+}
+/* CSS DU MENU */
+.headerTextMenu
+{
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #f1a900;
+}
+.blockTexteFeed {
+
+  border: 2px solid #f1a900;
+  line-height: 40px;
+  text-align: center;
+  margin-right: auto;
+
+  width: 595px;
+  height: 406px;
+}
+.blockTexteLog {
+
+  border: 2px solid #f1a900;
+  line-height: 40px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 595px;
+  height: 806px;
+}
+
+#logoGrand
+{
+    width: 213px;
+    height: 241px;
+    margin-top: 40px;
+    margin-bottom:40px
+    ;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+#logoPetit {
+  width: 337px;
+  height: 153px;
+}
+
+.textJaune
+{
+  width: 395px;
+  height: 43px;
+  font-size: 36px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+
+  color: #f1a900;
+}

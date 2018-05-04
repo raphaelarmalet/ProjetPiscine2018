@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+
+<html>
+ <title> Inscription </title>
+ <meta charset = "UTF-8"/>
+ <body>
+ <form method = "post"> 
+
+
 <?php 
  if (isset($_POST['Inscription']))
  {
@@ -8,16 +17,16 @@
  			extract($_POST);
 
 	
-			if (mb_strlen ($Nom)<1)
+			if (mb_strlen ($Nom)<3)
 			{
-				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un nom surperieur à 3 caractère";
 				$i=$i+1;
 
 			}
 
-			if (mb_strlen ($Prenom)<1)
+			if (mb_strlen ($Prenom)<3)
 			{
-				$errors[]="Veuillez saisir un prenom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un prenom surperieur à 3 caractère";
 				$i=$i+1;
 
 
@@ -42,7 +51,7 @@
 				$i=$i+1;
 			}  
 
-			if(count($errors)==0)
+			if(count($errors)== 0)
 			{
 				$serveur ="localhost";
 				$login = "root";
@@ -50,7 +59,7 @@
 				$bdd = "projetweb";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
-				$dbh = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
+				$db = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
 		
 				if($co)
 				{
@@ -62,15 +71,17 @@
 					$Tel = $_POST['Tel'];
 					$Langue = $_POST['Langue'];
 					$Diplome = $_POST['Diplome'];
+					
 
-					$q= $dbh->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
+					$q= $db->prepare("SELECT IDuser FROM user WHERE IDuser='$IDUser'");
 					$q-> execute();
 					$count=$q->rowcount();
 					$q->closeCursor();
 
-					if($count!=NULL)
+					if($count != NULL)
 					{
-						echo "Un compte avec ce mail existe deja";
+						echo "Un compte existant utilise deja ce mail";
+
 					}
 					else
 					{
@@ -79,7 +90,7 @@
 			
 						$result = mysqli_query($co, $qr);
 					}
-					
+
 				}
 
  				}
@@ -94,15 +105,9 @@
   					echo $errors[$j];
   				}
   		}
-?>
+?> 
 
-<!DOCTYPE html>
 
-<html>
- <title> Inscription </title>
- <meta charset = "UTF-8"/>
- <body>
-<form method = "post">
 	<p>
 	
 		<label for = "IDuser"> Mail : </label>
@@ -140,8 +145,12 @@
         <input type="checkbox" name="Homme" id="Statut" /> </br>
 		<input type="checkbox" name="Femme" id="Statut" /> </br>
 		
-		<input type="submit" name="Inscription" value="Inscription" /> </br>
-		
+		<input type="submit" name="Inscription" value="Inscription"/></br>
+       
+
+
+        <button> <a href="Inscriptionreussie.php?IDuser" suivant </a> </button>
+       </br>
 		</p>
 		</form>
 		</body>
