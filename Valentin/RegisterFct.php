@@ -83,12 +83,12 @@ session_start();
 						$q->closeCursor();
 						if($count!=NULL)
 						{
-							if($Statut==0)
+							if($Statut=='Etudiant')
 							{
 								header('Location: Inscriptionreussie.php');
 							}
 
-							if($Statut==1)
+							if($Statut=='Employeur')
 							{
 								header('Location: RegisterEmpFct.php');
 							}
