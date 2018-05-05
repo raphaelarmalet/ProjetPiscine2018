@@ -11,18 +11,35 @@
 <body>
   <header>
     <div class="container">
-      <div class="row">
-        <img class="col-lg-4" src="images/TheHiveLogoPetit.png" alt="TheHiveLogoGrand" id="logoPetit">
-        <a href=" journal.html " class="col-lg-1 headerTextMenu ">JOURNAL</a>
-        <a href=" reseau.html" class="col-lg-1 headerTextMenu">RESEAU</a>
-        <a href=" profil.html" class="col-lg-1 headerTextMenu ">PROFIL</a>
-        <a href=" emplois.html" class="col-lg-1 headerTextMenu">EMPLOIS</a>
-        <a href=" notifications.html" class="col-lg-2 headerTextMenu">NOTIFICATIONS</a>
-        <a href=" messagerie.html" class="col-lg-2 headerTextMenu">MESSAGERIE</a>
-  </header>
-  </div>
-  <div class="row">
+     <div class="row">
+      <div class = "col-lg-9">
+              <label for="inputRechercher"></label>
+              <input type="texte" class="form-control" id="inputRechercher" name="inputRechercher">
+      </div>
+      <div class = "col-lg-3">
+              <label for="buttonRechercher"></label>
+               <input type="submit" class="form-control" name="Rechercher" value="Rechercher"/></br>
+               <?php
+              if(isset($_POST['Rechercher']))
+              {
+                  header('Location : rechercher.php');
+              }
+              ?>
+      </div>
+      </form>
     <div class="row">
+        <img class="col-lg-4" src="images/TheHiveLogoPetit.png" alt="TheHiveLogoGrand" id="logoPetit">
+        <a href=" journal.php " class="col-lg-1 headerTextMenu ">JOURNAL</a>
+        <a href=" reseau.php" class="col-lg-1 headerTextMenu">RESEAU</a>
+        <a href=" profil.php" class="col-lg-1 headerTextMenu ">PROFIL</a>
+        <a href=" emplois.php" class="col-lg-1 headerTextMenu">EMPLOIS</a>
+        <a href=" Notification.php" class="col-lg-1 headerTextMenu">NEWS</a>
+        <a href=" Messagerie.php" class="col-lg-2 headerTextMenu">MESSAGERIE</a>
+        <a href=" Connexion.php" class="col-lg-1 headerTextMenu">DECONNEXION</a>
+  </header>
+</div>
+  <div class="row">
+    <div class="form-row">
       <img class="PhotoProfil" src="images/PhotoProfil.png" alt="photoProfil">
       <div class="form-row align-items-center">
       	<div  class ="col center">
@@ -50,7 +67,7 @@ $co->close();
         </h1>
     </div>
         <div class="col center">
-        <h2 class="col-lg-12">
+        <h1 class="col-lg-12">
 <?php 
 $SID= $_SESSION['IDuser'];
 
@@ -78,7 +95,7 @@ if ($result->num_rows > 0) {
 	}
 $co->close();
 ?>  
-		</h2>
+		</h1>
 	</div>
       </div>
     </div>
@@ -208,13 +225,17 @@ $co->close();
 ?>
 </td>
           </tr>
+            <tr>
+            <td>
+               <a href=" ModifEtu.php " class="col-lg-1 headerTextMenu ">Modifier étudiant</a>
+               <a href=" ModifEmp.php " class="col-lg-1 headerTextMenu ">Modifier employeur</a>
+          </tr>
 
         </tbody>
       </table>
     </div>
   </div>
-
-  </div>
+</div>
 </body>
 
 </html>

@@ -216,6 +216,8 @@ svg:not(:root) {
 
 table {
   border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 caption {
@@ -1980,7 +1982,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 5px;
 }
 
 .form-text {

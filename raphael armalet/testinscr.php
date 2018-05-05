@@ -1,8 +1,17 @@
+
+
+
+<!DOCTYPE html>
+
+<html>
+ <title> Inscription </title>
+ <meta charset = "UTF-8"/>
+ <body>
+ <form method = "post"> 
+
+
 <?php 
-<<<<<<< HEAD
-=======
- //require ('fonctions.php');
->>>>>>> 02bfb8dce8a0efd439362f38ce442eb749e6c5cc
+session_start();
  if (isset($_POST['Inscription']))
  {
 	if(!empty ($_POST['IDuser']) &&! empty ($_POST['MDP']) && !empty ($_POST['MDPconfirmation'])&&!empty ($_POST['Nom']) &&! empty ($_POST['Prenom'])&& !empty ($_POST['Age'])&& !empty ($_POST['Langue'])&& !empty ($_POST['Diplome'])&& !empty ($_POST['Tel']))
@@ -12,16 +21,16 @@
  			extract($_POST);
 
 	
-			if (mb_strlen ($Nom)<1)
+			if (mb_strlen ($Nom)<3)
 			{
-				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un nom surperieur à 3 caractère";
 				$i=$i+1;
 
 			}
 
-			if (mb_strlen ($Prenom)<1)
+			if (mb_strlen ($Prenom)<3)
 			{
-				$errors[]="Veuillez saisir un prenom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un prenom surperieur à 3 caractère";
 				$i=$i+1;
 
 
@@ -50,11 +59,10 @@
 			{
 				$serveur ="localhost";
 				$login = "root";
-				$pw = "";
-				$bdd = "projetweb";
+				$pw = "root";
+				$bdd = "ProjetWEB";
 		
 				$co= mysqli_connect($serveur,$login,$pw,$bdd);
-				$dbh = new PDO('mysql:host=localhost;dbname=projetweb', $login, $pw);
 		
 				if($co)
 				{
@@ -66,41 +74,21 @@
 					$Tel = $_POST['Tel'];
 					$Langue = $_POST['Langue'];
 					$Diplome = $_POST['Diplome'];
+					
+					
 
-<<<<<<< HEAD
-					$q= $dbh->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
-=======
 					/*$q= $co->prepare("SELECT IDUser FROM user WHERE IDUser='$IDUser'");
->>>>>>> 02bfb8dce8a0efd439362f38ce442eb749e6c5cc
 					$q-> execute();
 					$count=$q->rowcount();
 					$q->closeCursor();
 
-<<<<<<< HEAD
-					if($count!=NULL)
-					{
-						echo "Un compte avec ce mail existe deja";
-					}
-					else
-					{
-=======
 					if($count=0)
 					{*/
->>>>>>> 02bfb8dce8a0efd439362f38ce442eb749e6c5cc
 						$qr= "INSERT INTO `user` (`IDuser`, `Nom`, `Prenom`, `Mdp`, `Sexe`, `Statut`, `Photo`, `Langue`, `Diplome`, `Telephone`, `Age`, `Statut2`) 
 								VALUES ('$IDUser','$Nom', '$Prenom', '$MDP', '1', '1', 'e', '$Langue', '$Diplome', '$Tel', '$Age', '1')";
 			
 						$result = mysqli_query($co, $qr);
-<<<<<<< HEAD
-					}
-=======
-					/*}
-					else
-					{
-						echo "Un compte utilisant cette addresse mail existe deja";
-					}*/
->>>>>>> 02bfb8dce8a0efd439362f38ce442eb749e6c5cc
-					
+
 				}
 
  				}
@@ -115,20 +103,25 @@
   					echo $errors[$j];
   				}
   		}
-?>
 
-<!DOCTYPE html>
+$_SESSION['IDuser'] = $IDuser;
+$_SESSION['Nom'] = $Nom;
+$_SESSION['Prenom'] = $Prenom;
+$_SESSION['Age'] = $Age;
+$_SESSION['Diplome'] = $Diplome;
+$_SESSION['Tel'] = $Tel;
+$_SESSION['Langue'] = $Langue;
 
-<html>
- <title> Inscription </title>
- <meta charset = "UTF-8"/>
- <body>
-<form method = "post">
+
+?> 
+
+
 	<p>
 	
 		<label for = "IDuser"> Mail : </label>
         <input type="text" name="IDuser" id="IDuser" required="required"/> </br>
-		
+       
+
 		<label for = "MDP"> MDP : </label>
         <input type="text" name="MDP" id="MDP" required="required"/> </br>
 
@@ -161,8 +154,17 @@
         <input type="checkbox" name="Homme" id="Statut" /> </br>
 		<input type="checkbox" name="Femme" id="Statut" /> </br>
 		
-		<input type="submit" name="Inscription" value="Inscription" /> </br>
-		
+		<input type="submit" name="Inscription" value="Inscription"/></br>
+       
+
+
+        <button> <a href="Inscriptionreussie.php?variable" > suivant </a> </button>
+       </br>
+        
+
+       
+	
+
 		</p>
 		</form>
 		</body>

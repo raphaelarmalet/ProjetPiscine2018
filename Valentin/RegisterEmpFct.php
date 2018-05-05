@@ -11,9 +11,15 @@ if (isset($_POST['Inscription']))
 
 			if (mb_strlen ($Poste)<2)
 			{
-				$errors[]="Veuillez saisir un mot supérieur à 2 caractère";
+				$errors[]="Veuillez saisir un mot supérieur à 1 caractère";
 				$i=$i+1;
 			}
+			if (mb_strlen ($Entreprise)<2)
+			{
+				$errors[]="Veuillez saisir un mot supérieur à 1 caractère";
+				$i=$i+1;
+			}
+
 
 			
 
@@ -56,7 +62,7 @@ if (isset($_POST['Inscription']))
 						}
 						else
 						{
-							echo "Mettez des nombres pour le champ IDEmployeur";
+							echo "Erreur sur un des champs";
 						}
 				}
 

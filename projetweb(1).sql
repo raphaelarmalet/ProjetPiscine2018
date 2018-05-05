@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:8889
--- Généré le :  mar. 01 mai 2018 à 15:02
--- Version du serveur :  5.6.38
--- Version de PHP :  7.2.1
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 01 mai 2018 à 15:47
+-- Version du serveur :  5.7.21
+-- Version de PHP :  5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,34 +19,35 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `ProjetWEB`
+-- Base de données :  `projetweb`
 --
-CREATE DATABASE IF NOT EXISTS `ProjetWEB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `ProjetWEB`;
+CREATE DATABASE IF NOT EXISTS `projetweb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `projetweb`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Album`
+-- Structure de la table `album`
 --
 
-DROP TABLE IF EXISTS `Album`;
-CREATE TABLE IF NOT EXISTS `Album` (
+DROP TABLE IF EXISTS `album`;
+CREATE TABLE IF NOT EXISTS `album` (
   `NJaime` int(11) NOT NULL,
   `LPhoto` longblob NOT NULL,
   `NomAlbum` varchar(255) NOT NULL,
   `IDUSER` varchar(255) NOT NULL,
-  PRIMARY KEY (`NomAlbum`,`IDUSER`)
+  PRIMARY KEY (`NomAlbum`,`IDUSER`),
+  KEY `IDUSER` (`IDUSER`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Conversation`
+-- Structure de la table `conversation`
 --
 
-DROP TABLE IF EXISTS `Conversation`;
-CREATE TABLE IF NOT EXISTS `Conversation` (
+DROP TABLE IF EXISTS `conversation`;
+CREATE TABLE IF NOT EXISTS `conversation` (
   `Lmessage` varchar(255) NOT NULL,
   `LDate` varchar(255) NOT NULL,
   `LIDuser` varchar(255) NOT NULL,
@@ -56,11 +59,11 @@ CREATE TABLE IF NOT EXISTS `Conversation` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Emploi`
+-- Structure de la table `emploi`
 --
 
-DROP TABLE IF EXISTS `Emploi`;
-CREATE TABLE IF NOT EXISTS `Emploi` (
+DROP TABLE IF EXISTS `emploi`;
+CREATE TABLE IF NOT EXISTS `emploi` (
   `Profil` varchar(255) NOT NULL,
   `Intitule` varchar(255) NOT NULL,
   `Remuneration` int(11) NOT NULL,
@@ -75,11 +78,11 @@ CREATE TABLE IF NOT EXISTS `Emploi` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `EMPLOYEUR`
+-- Structure de la table `employeur`
 --
 
-DROP TABLE IF EXISTS `EMPLOYEUR`;
-CREATE TABLE IF NOT EXISTS `EMPLOYEUR` (
+DROP TABLE IF EXISTS `employeur`;
+CREATE TABLE IF NOT EXISTS `employeur` (
   `IDEmployeur` int(11) NOT NULL AUTO_INCREMENT,
   `IDUser` varchar(255) NOT NULL,
   `Poste` varchar(255) NOT NULL,
@@ -90,11 +93,11 @@ CREATE TABLE IF NOT EXISTS `EMPLOYEUR` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `ETUDIANT`
+-- Structure de la table `etudiant`
 --
 
-DROP TABLE IF EXISTS `ETUDIANT`;
-CREATE TABLE IF NOT EXISTS `ETUDIANT` (
+DROP TABLE IF EXISTS `etudiant`;
+CREATE TABLE IF NOT EXISTS `etudiant` (
   `IDEtudiant` int(11) NOT NULL AUTO_INCREMENT,
   `IDUser` varchar(255) NOT NULL,
   `ING` int(11) NOT NULL,
@@ -108,11 +111,11 @@ CREATE TABLE IF NOT EXISTS `ETUDIANT` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Publication`
+-- Structure de la table `publication`
 --
 
-DROP TABLE IF EXISTS `Publication`;
-CREATE TABLE IF NOT EXISTS `Publication` (
+DROP TABLE IF EXISTS `publication`;
+CREATE TABLE IF NOT EXISTS `publication` (
   `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `NJaime` int(11) NOT NULL,
   `NCommentaire` int(11) NOT NULL,
@@ -120,31 +123,33 @@ CREATE TABLE IF NOT EXISTS `Publication` (
   `Rang` int(11) NOT NULL,
   `Fichier` blob NOT NULL,
   `Texte` text NOT NULL,
-  `NomAuteur` varchar(255) NOT NULL,
-  `PreAuteur` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `Reseaux`
---
-
-DROP TABLE IF EXISTS `Reseaux`;
-CREATE TABLE IF NOT EXISTS `Reseaux` (
-  `LAmis` varchar(255) NOT NULL,
   `IDUser` varchar(255) NOT NULL,
-  PRIMARY KEY (`LAmis`)
+  PRIMARY KEY (`Date`,`IDUser`),
+  KEY `IDUser` (`IDUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `User`
+-- Structure de la table `reseaux`
 --
 
-DROP TABLE IF EXISTS `User`;
-CREATE TABLE IF NOT EXISTS `User` (
+DROP TABLE IF EXISTS `reseaux`;
+CREATE TABLE IF NOT EXISTS `reseaux` (
+  `IDUser` varchar(255) NOT NULL,
+  `LAmis` varchar(255) NOT NULL,
+  PRIMARY KEY (`IDUser`),
+  KEY `IDUser` (`IDUser`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
   `IDuser` varchar(255) NOT NULL,
   `Nom` varchar(255) NOT NULL,
   `Prénom` varchar(255) NOT NULL,
@@ -164,16 +169,35 @@ CREATE TABLE IF NOT EXISTS `User` (
 --
 
 --
--- Contraintes pour la table `Emploi`
+-- Contraintes pour la table `album`
 --
-ALTER TABLE `Emploi`
-  ADD CONSTRAINT `emploi_ibfk_1` FOREIGN KEY (`IDEmployeur`) REFERENCES `EMPLOYEUR` (`IDEmployeur`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `album`
+  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`IDUSER`) REFERENCES `user` (`IDuser`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `EMPLOYEUR`
+-- Contraintes pour la table `emploi`
 --
-ALTER TABLE `EMPLOYEUR`
-  ADD CONSTRAINT `employeur_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `User` (`IDuser`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `emploi`
+  ADD CONSTRAINT `emploi_ibfk_1` FOREIGN KEY (`IDEmployeur`) REFERENCES `employeur` (`IDEmployeur`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `employeur`
+--
+ALTER TABLE `employeur`
+  ADD CONSTRAINT `employeur_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDuser`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `publication`
+--
+ALTER TABLE `publication`
+  ADD CONSTRAINT `publication_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDuser`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Contraintes pour la table `reseaux`
+--
+ALTER TABLE `reseaux`
+  ADD CONSTRAINT `reseaux_ibfk_1` FOREIGN KEY (`IDUser`) REFERENCES `user` (`IDuser`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -10,15 +10,15 @@ session_start();
      		
      		$errors= [];
  			extract($_POST);
-			if (mb_strlen ($Nom)<1)
+			if (mb_strlen ($Nom)<2)
 			{
-				$errors[]="Veuillez saisir un nom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un nom supérieur à 1 caractère";
 				$i=$i+1;
 			}
 
-			if (mb_strlen ($Prenom)<1)
+			if (mb_strlen ($Prenom)<2)
 			{
-				$errors[]="Veuillez saisir un prénom surperieur à 1 caractère";
+				$errors[]="Veuillez saisir un prénom supérieur à 1 caractère";
 				$i=$i+1;
 			}
 
